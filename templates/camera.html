@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% from 'bootstrap5/form.html' import render_form %}
+
+{% block content %}
+    <img src="{{ url_for('media_route', path=path) }}" height=720 width=1280 class="img-responsive center-block">
+{% endblock %}

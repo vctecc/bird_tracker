@@ -1,0 +1,40 @@
+{% from 'bootstrap5/nav.html' import render_nav_item %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {{ bootstrap.load_css() }}
+    <style>
+      pre {
+          background: #ddd;
+          padding: 10px;
+      }
+      h2 {
+          margin-top: 20px;
+      }
+      footer {
+          margin: 20px;
+      }
+  </style>
+</head>
+<body>
+  <title>{% block title %}{% endblock %}</title>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav mr-auto">
+        {{ render_nav_item('home', 'Home') }}
+        {{ render_nav_item('camera', 'Camera') }}
+      </ul>
+    </div>
+  </nav>
+
+  <section class="content">
+    <header>
+      {% block header %}{% endblock %}
+    </header>
+    {% block content %}{% endblock %}
+  </section>
+
+</body>
