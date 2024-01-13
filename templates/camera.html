@@ -2,5 +2,37 @@
 {% from 'bootstrap5/form.html' import render_form %}
 
 {% block content %}
-    <img src="{{ url_for('media_route', path=path) }}" height=720 width=1280 class="img-responsive center-block">
+
+<div id="main" class="justify-content-md-center mb-3">
+    <canvas
+        id="preview"
+        height=720 width=1280
+        class="mx-auto d-block rounded mb-3"
+        style="background-image: url( {{ url_for('media_route', path=path) }})"
+    ></canvas>
+</div>
+
+<script>
+    function drawPolygon() {
+        var polygon = [[300, 710], [300, 350], [800, 350], [800, 710]];
+        ctx.strokeStyle = "#39FF14";
+        ctx.lineWidth = 5;
+
+        ctx.beginPath();
+        ctx.moveTo(polygon[0][0], polygon[0][1]);
+        for(idx = 1; idx < polygon.length; idx += 1 ){
+            let item = polygon[idx];
+            ctx.lineTo(item[0] , item[1]);
+        }
+        ctx.closePath();
+        ctx.stroke();
+
+    }
+
+    var canvas = document.getElementById("preview"),
+    ctx = canvas.getContext("2d");
+    drawPolygon();
+
+</script>
+
 {% endblock %}

@@ -2,11 +2,20 @@
 {% from 'bootstrap5/form.html' import render_form %}
 
 {% block content %}
-<!-- <img src='{{ url_for("static", filename="images/"+path) }}' height=720 width=1280 class="img-responsive center-block"> -->
-<img src='{{ url_for("static", filename="images/"+path) }}' height=540 width=960 class="img-responsive center-block">
-<ul class="nav navbar-nav">
-    <li><a href="/{{pager.prev}}">&larr;</a> </li>
-    <li><a href="/{{pager.next}}">&rarr;</a> </li>
-</ul>
+<div id="main" class="justify-content-md-center mb-3"></div>
+
+    <!-- <img src='{{ url_for("static", filename="images/"+path) }}' height=720 width=1280 class="img-responsive center-block"> -->
+    <img src='{{ url_for("static", filename="images/"+path) }}' height=540 width=960 class="mx-auto d-block rounded mb-3">
+    
+    <div class="input-group justify-content-md-center">
+        <form action=/{{pager.prev}}>
+            <input type="submit" class="btn btn-outline-secondary me-md-4" value="Prev" />
+        </form>
+        <form action=/{{pager.next}}>
+            <input type="submit" class="btn btn-outline-secondary" value="Next" />
+        </form>
+    </div>
+
+</div>
 
 {% endblock %}
