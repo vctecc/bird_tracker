@@ -13,7 +13,12 @@ class ImgPager:
         ]
 
     def get(self, index: int):
-        return self.buffer[index]
+        if index > len(self.buffer):
+            self.fill_buffer()
+        try:
+            return self.buffer[index]
+        except IndexError:
+            return None
 
     def set(self, idx: int):
         self.idx = idx
