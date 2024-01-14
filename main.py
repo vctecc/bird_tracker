@@ -8,7 +8,7 @@ from pathlib import Path
 
 MIN_CONTOUR_SIZE = 1500
 GREEN_RGB = (0, 255, 0)
-COUNT = 250
+COUNT = 1000
 IMAGES_DIR = Path("/home/pi/bird_tracker/static/images")
 
 
@@ -64,7 +64,7 @@ while COUNT >= counter:
         with open(IMAGES_DIR / f"{timestamp}.txt", "w") as f:
             for c in contours:
                 coords = cv2.boundingRect(c)
-                f.write(" : ".join(coords) + "\n")
+                f.write(" : ".join((str(c) for c in coords)) + "\n")
 
         name = f"{timestamp}.jpeg"
         path = IMAGES_DIR / name
