@@ -10,9 +10,19 @@
         class="mx-auto d-block rounded mb-3"
         style="background-image: url( {{ url_for('media_route', path=path) }})"
     ></canvas>
+    
+    <div class="input-group justify-content-md-center">
+        <button class="btn btn-secondary me-md-4" onclick="clearCanvas()">Get preview</button>
+        <button class="btn btn-danger me-md-4" onclick="clearCanvas()">Clean ROI</button>
+        <button class="btn btn-success me-md-4" onclick="clearCanvas()">Set up ROI</button>
+       
+    </div>
 </div>
 
 <script>
+    function clearCanvas() {
+        ctx.clearRect(0, 0, 1280, 720); 
+    }
     function drawPolygon() {
         var polygon = [[300, 710], [300, 350], [800, 350], [800, 710]];
         ctx.strokeStyle = "#39FF14";
